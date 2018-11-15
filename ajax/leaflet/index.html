@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 		<meta charset="UTF-8">
+ 		<title>Cartographie des écoles primaires en milieu parasien</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+   crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+   crossorigin=""></script>
+ 		<script type="text/javascript" src="index.js"></script>
+ 		<link rel="stylesheet" type="text/css" href="style.css">
+ </head>
+ <body onlaod()="">
+ 	<div id="mapid"></div>
+	<script type="text/javascript">
+
+		var mymap = L.map('mapid').setView([ 48.851291, 2.345658], 12);
+
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		id: 'mapbox.streets'
+	}).addTo(mymap);
+
+	var marker;
+	var lat;
+	var long;
+	var  desc;
+
+
+	function drawPopup(long,lat,desc){
+
+		marker = L.marker([long,lat]).addTo(mymap);
+		marker.bindPopup(desc).openPopup();
+	}
+
+	function loadOpenData(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+ 		if (this.readyState == 4 && this.status == 200) {
+					 		var  dataset=JSON.parse(this.responseText);
+					  		var i;
+ 							for  (i in dataset.records)
+ 							{
+ 									var addr= dataset.records[i].fields.adresse;
+ 									var lat=  dataset.records[i].geometry.coordinates[0];
+ 									var long=dataset.records[i].geometry.coordinates[1];
+ 									drawPopup(long,lat,addr);
+ 							}
+					  }
+	};
+	xhttp.open("GET", "https://opendata.paris.fr//api/records/1.0/search/?dataset=etablissements-scolaires", true);
+	xhttp.send();
+}
+</script>
+
+<button onclick="drawPopup(48.854,2.814,'ceci est un test')"> LOAD TEST </button>
+<button onclick="loadOpenData()"> LOAD DATA </button>
+
+
+ </body>
+ </html>
