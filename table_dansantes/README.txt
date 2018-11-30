@@ -1,0 +1,1 @@
+ici, on peut trouver l'exercice sur les multiplications qui apparaissent sous forme de points sur un canvas

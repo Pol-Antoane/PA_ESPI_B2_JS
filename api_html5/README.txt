@@ -1,0 +1,1 @@
+Voici les différentes rescources utilisée pour la présentation des webworkers, à l'exception du diaporama
