@@ -1,5 +1,5 @@
 {
-  "name": "maxime_le_texier_epsi_b2_js",
+  "name": "PA_ESPI_B2_JS",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MaximeLT/Maxime_Le_Texier_epsi_B2_js.git"
+    "url": "https://github.com/Pol-Antoane/PA_ESPI_B2_JS.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MaximeLT/Maxime_Le_Texier_epsi_B2_js/issues"
+    "url": "https://github.com/Pol-Antoane/PA_ESPI_B2_JS.git/issues"
   },
-  "homepage": "https://github.com/MaximeLT/Maxime_Le_Texier_epsi_B2_js#readme",
+  "homepage": "https://github.com/Pol-Antoane/PA_ESPI_B2_JS.git#readme",
   "dependencies": {
     "express": "^4.16.4",
     "http-server": "^0.11.1",
