@@ -1,0 +1,2 @@
+Voici l'exercice sur les particules que nous avons effectué.
+Dans cet exercice, on peut voir des particules partir d'un point et se diriger vers un autre, lorsqu'elles arrivent à ce deuxième point, elle sont repoussées  par ce dernier

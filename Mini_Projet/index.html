@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ecole</title>
+</head>
+<body>
+	<h1>choisissez votre école</h1>
+	<p id="log"></p><br>
+	<div id="choix">
+		<button onclick="Paris()">Paris</button>
+		<button onclick="Grenoble()">Grenoble</button>
+		<button onclick="Brest()">Brest</button>
+		<button onclick="Lyon()">Lyon</button>
+		<button onclick="Nantes()">nantes</button>
+		<button onclick="Arras()">Arras</button>
+		<button onclick="Lille()">Lille</button>
+		<button onclick="Bordeaux()">Bordeaux</button>
+		<button onclick="Montpellier()">Montpellier</button>
+	</div>
+	<div id="form">
+			<h4>notez les écoles</h4>
+			Paris:<br>
+			<input type="text" name="select">
+			<br>
+			Brest:<br>
+			<input type="text" name="select">
+			<br>
+			Grenoble:<br>
+			<input type="text" name="select">
+			<br>
+			Lyon:<br>
+			<input type="text" name="select">
+			<br>
+			Nantes:<br>
+			<input type="text" name="select">
+			<br>
+			Arras:<br>
+			<input type="text" name="select">
+			<br>
+			Lille:<br>
+			<input type="text" name="select">
+			<br>
+			Bordeaux:<br>
+			<input type="text" name="select">
+			<br>
+			Montpellier:<br>
+			<input type="text" name="select">
+			<br>
+			<button onclick="Confirm(ecole); refresh()">Confirmer</button>
+	</div>
+	<br>
+	<button onclick="forward()">Voir Note</button>
+	<script>
+
+		var ecole = { liste : [
+				["Paris", null],
+				["Grenoble", null],
+				["Brest", null],
+				["Lyon", null],
+				["Nantes", null],
+				["Arras", null],
+				["Lille", null],
+				["Bordeaux", null],
+				["Montpellier", null]
+			],
+			ecolelog : ""
+		};
+
+		function show() { 
+			var x = document.getElementById("log");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			var z = document.getElementById("form");
+			if (z.style.display === "none") {
+				z.style.display = "block";
+			} else {
+				z.style.display = "none";
+			}
+		}
+
+		window.onload = démarrage();
+		function démarrage() {
+			show();
+		}
+
+
+		function Paris() {
+			document.getElementById("choix").innerHTML = "log en temps que paris";
+			ecole.ecolelog = "Paris"
+			show();
+
+		}
+		function Grenoble() {
+			document.getElementById("choix").innerHTML = "log en temps que grenoble";
+			ecole.ecolelog = "Grenoble"
+			show();
+		}
+		function Brest() {
+			document.getElementById("choix").innerHTML = "log en temps que Brest";
+			ecole.ecolelog = "Brest"
+			show();
+		}
+		function Lyon() {
+			document.getElementById("choix").innerHTML = "log en temps que Lyon";
+			ecole.ecolelog = "Lyon"
+			show();
+		}
+		function Nantes() {
+			document.getElementById("choix").innerHTML = "log en temps que nantes";
+			ecole.ecolelog = "Nantes"
+			show();
+		}
+		function Arras() {
+			document.getElementById("choix").innerHTML = "log en temps que Arras";
+			ecole.ecolelog = "Arras"
+			show();
+		}
+		function Lille() {
+			document.getElementById("choix").innerHTML = "log en temps que Lille";
+			ecole.ecolelog = "Lille"
+			show();
+		}
+		function Bordeaux() {
+			document.getElementById("choix").innerHTML = "log en temps que Bordeaux";
+			ecole.ecolelog = "Bordeaux"
+			show();
+		}
+		function Montpellier() {
+			document.getElementById("choix").innerHTML = "log en temps que Montpellier";
+			ecole.ecolelog = "Montpellier"
+			show();
+		}
+		
+		console.log(ecole.liste)
+		function Confirm(ecole){
+
+		for (var i = 0; i < 9; i++) {
+
+				ecole.liste[i][1] = document.getElementsByName("select")[i].value;
+				console.log(document.getElementsByName("select")[i].value)
+			}
+		var ecoleString = JSON.stringify(ecole);
+				console.log(ecoleString);
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "http://localhost:1025/");
+				xhttp.setRequestHeader("Content-Type", "application/json");
+				xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+				xhttp.send(ecoleString);
+
+		}
+		function refresh(){
+			alert("actualisation");
+			document.location.href="http://localhost:1025/?oui=note"
+		}
+		function forward(){
+			alert("Direction page de notation");
+			document.location.href="http://localhost:1025/?oui=result"
+		}
+		
+	</script>
+</body>
+</html>
